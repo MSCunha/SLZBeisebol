@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link rel="stylesheet" href="style.css">
+		<script type="module" src="auth.js"></script>
+	</head>
+	<body>
+		<div class="login-box" id="loginform">
+			<img src="logoslzbeisebol.png" class="logo" alt="logo">
+			<form action="login" method="submit">
+				<input type="text" name="email" id="email" placeholder="Email" required>
+				<input type="password" name="senha" id="senha" placeholder="Senha" required>
+				<span class="text-button" name="recoverpsw" id="recoverpsw" disabled>Recuperar Senha.</span>
+				<button type="submit" id="login" name="login" disabled>LOGIN</button>
+				<button type="button" id="registrar" name="registrar">REGISTRAR</button>
+				<div class="checkbox-container">
+						<input type="checkbox" id="remember">
+						<label for="remember">Lembrar</label>
+				</div>
+			</form>
+		</div>
+		<div class="reg-box" id="regform" style="display: none;">
+			<img src="logoslzbeisebol.png" class="logo" alt="logo">
+			<form action="registrar" method="submit">
+				<input type="text" name="nome" id="nome" placeholder="Nome" required>
+				<input type="number" name="id" id="id" placeholder="# Numero" min="1" max="99" required>
+				<input type="text" name="email" id="email" placeholder="Email" required>
+				<input type="password" name="regsenha" id="regsenha" placeholder="Senha" required>
+				<input type="password" name="regsenha2" id="regsenha2" placeholder="Confirmar Senha" required>
+				<button type="button" name="cadastrar" id="cadastrar" disabled>CADASTRAR</button>
+				<button type="button" name="retornar" id="retornar">RETORNAR</button>
+			</form>
+		</div>
+		<script src="script.js"></script>
+	</body>
+</html>
