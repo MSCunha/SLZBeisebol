@@ -15,15 +15,17 @@ document.getElementById('retornar').addEventListener('click', function() {
 	document.getElementById('regform').style.display = 'none';
 });
 
-document.getElementById('menuToggle').addEventListener('click', function() {
-		const sidebar = document.getElementById('sidebar');
-		if (sidebar.style.left === '-200px') {
-				sidebar.style.left = '0';
-				document.querySelector('.content').style.marginLeft = '200px';
-		} else {
-				sidebar.style.left = '-200px';
-				document.querySelector('.content').style.marginLeft = '0';
-		}
+document.addEventListener('DOMContentLoaded', function() {
+	document.getElementById('menuToggle').addEventListener('click', function() {
+			const sidebar = document.getElementById('sidebar');
+			if (sidebar.style.left === '-200px') {
+					sidebar.style.left = '0';
+					document.querySelector('.content').style.marginLeft = '200px';
+			} else {
+					sidebar.style.left = '-200px';
+					document.querySelector('.content').style.marginLeft = '0';
+			}
+	});
 });
 
 recoverpsw.addEventListener('click', function(){
