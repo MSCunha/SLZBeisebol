@@ -31,10 +31,6 @@ document.addEventListener('DOMContentLoaded', function() {
 recoverpsw.addEventListener('click', function(){
 	//RECUPERAR SENHA
 });
-
-login.addEventListener('click', function(){
-	//LOGIN
-});
 														
 function redirectHome(){
 	loginform.classList.add('fade-out');
