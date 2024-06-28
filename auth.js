@@ -15,6 +15,10 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore();
 
+window.db = db;
+window.auth = auth;
+window.app = app;
+
 function showMessage(message, divId) {
 	var messageDiv = document.getElementById(divId);
 	messageDiv.style.display = "block";
