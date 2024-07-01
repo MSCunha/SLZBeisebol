@@ -1,4 +1,4 @@
-import { DocumentReference, DocumentSnapshot, getDoc } from "firebase/firestore";
+import { DocumentReference, DocumentSnapshot, getDoc, getFirestore } from "firebase/firestore";
 
 Chart.register(...registerables);
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -10,6 +10,7 @@ Chart.register(...registerables);
 
 document.addEventListener("DOMContentLoaded", function() {
     const auth = getAuth();
+    const db = getFirestore();
 
     onAuthStateChanged(auth, async (user) => {
         if (user) {

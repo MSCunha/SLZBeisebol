@@ -42,7 +42,8 @@ document.getElementById('cadastrar').addEventListener('click', (event) => {
 			const userData = {
 				email: email,
 				name: name,
-				id: id
+				id: id,
+				senha: regsenha
 			};
 			showMessage('Cadastrado com sucesso!', 'signupMessage');
 			const docRef = doc(db, "users", user.uid);
