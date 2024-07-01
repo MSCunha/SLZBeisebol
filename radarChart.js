@@ -1,86 +1,94 @@
-import { DocumentReference, DocumentSnapshot, getDoc, getDocs } from "firebase/firestore";
+import { DocumentReference, DocumentSnapshot, getDoc } from "firebase/firestore";
 
 Chart.register(...registerables);
-document.addEventListener("DOMContentLoaded", function(){
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
+import { Chart, registerables } from 'chart.js';
+import { db } from './auth.js';
+
+Chart.register(...registerables);
+
+document.addEventListener("DOMContentLoaded", function() {
     const auth = getAuth();
 
-    onAuthStateChanged(auth, (user)=>{
-        if (user){
-            const UID=user.uid;
-            const docRef=doc(db, 'dbplayers', UID);
-            getDocs(DocumentReference).then((DocumentSnapshot) => {
-                if(DocumentSnapshot.exists()){
-                    const user=DocumentSnapshot.data();
-                    const ctx= document.getElementById('radarChart').getContext('2d');
-                    const user = doc.data();
-                    let fisMap = new Map(Object.entries(user));
-                    let jogMap = new Map(Object.entries(user));
-                    const fisData={
+    onAuthStateChanged(auth, async (user) => {
+        if (user) {
+            const UID = user.uid;
+            const docRef = doc(db, 'dbplayers', UID);
+            try {
+                const documentSnapshot = await getDoc(docRef);
+                if (documentSnapshot.exists()) {
+                    const userData = documentSnapshot.data(); 
+                    let fisMap = new Map(Object.entries(userData));
+                    let jogMap = new Map(Object.entries(userData));
+
+                    const fisData = {
                         labels: ['For', 'Vel', 'Agi', 'Flex', 'Res'],
                         datasets: [{
-                            label:'Atrbutos fisicos',
+                            label: 'Atributos físicos',
                             data: [
-                                fisMap.FOR,
-                                fisMap.VEL,
-                                fisMap.AGI,
-                                fisMap.FLEX,
-                                fisMap.RES
+                                fisMap.get('FOR'),
+                                fisMap.get('VEL'),
+                                fisMap.get('AGI'),
+                                fisMap.get('FLEX'),
+                                fisMap.get('RES')
                             ],
-                            backgroundColor:'rgba(255, 99, 132, 0.2)',
-                            borderColor:'rgba(255, 99, 132, 1)',
-                            berderWidth: 1
+                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 1
                         }]
                     };
 
-                    const jogData={
+                    const jogData = {
                         labels: ['Int', 'Def', 'Reb', 'Prec', 'Arr'],
                         datasets: [{
-                            label:'Atrbutos fisicos',
+                            label: 'Atributos de jogo',
                             data: [
-                                jogMap.INT,
-                                jogMap.DEF,
-                                jogMap.REB,
-                                jogMap.PREC,
-                                jogMap.ARR
+                                jogMap.get('INT'),
+                                jogMap.get('DEF'),
+                                jogMap.get('REB'),
+                                jogMap.get('PREC'),
+                                jogMap.get('ARR')
                             ],
-                            backgroundColor:'rgba(255, 132, 99, 0.2)',
-                            borderColor:'rgba(255, 132, 99, 1)',
-                            berderWidth: 1
+                            backgroundColor: 'rgba(255, 132, 99, 0.2)',
+                            borderColor: 'rgba(255, 132, 99, 1)',
+                            borderWidth: 1
                         }]
                     };
 
-                    const chartOpt={
-                        scales:{
+                    const chartOpt = {
+                        scales: {
                             r: {
                                 angleLines: {
                                     display: false
                                 },
                                 suggestedMin: 0,
-                                SuggestedMax: 100
+                                suggestedMax: 100
                             }
                         }
                     };
 
                     const fisCtx = document.getElementById('fisChart').getContext('2d');
-                    new CharacterData(fisCtx,{
+                    new Chart(fisCtx, {
                         type: 'radar',
-                        data: 'fisData',
+                        data: fisData,
                         options: chartOpt
                     });
+
                     const jogCtx = document.getElementById('jogChart').getContext('2d');
-                    new CharacterData(jogCtx,{
+                    new Chart(jogCtx, {
                         type: 'radar',
-                        data: 'jogData',
+                        data: jogData,
                         options: chartOpt
                     });
-                }else{
-                    console.log("no such doc!");
+                } else {
+                    console.log("No such document!");
                 }
-            }).catch((error)=>{
-                console.log("errp get doc:", error);
-            });
-        } else{
-            console.log("no user signed in!");
+            } catch (error) {
+                console.log("Error getting document:", error);
+            }
+        } else {
+            console.log("No user signed in!");
         }
     });
 });
