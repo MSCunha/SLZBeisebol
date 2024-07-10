@@ -4,12 +4,12 @@ import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/fireb
 
 const firebaseConfig = {
 	apiKey: "AIzaSyBDzwZ-7I8V7F0EA_WNxePoFTUYG2cybKA",
-	authDomain: "slzbeisebolapp.firebaseapp.com",
-	databaseURL: "https://slzbeisebolapp-default-rtdb.firebaseio.com",
-	projectId: "slzbeisebolapp",
-	storageBucket: "slzbeisebolapp.appspot.com",
-	messagingSenderId: "425869276017",
-	appId: "1:425869276017:web:a44c815f0e65a8b74d3cd0"
+  	authDomain: "slzbeisebolapp.firebaseapp.com",
+  	databaseURL: "https://slzbeisebolapp-default-rtdb.firebaseio.com",
+  	projectId: "slzbeisebolapp",
+  	storageBucket: "slzbeisebolapp.appspot.com",
+ 	 messagingSenderId: "425869276017",
+  	appId: "1:425869276017:web:3cb73766e7e650fc4d3cd0"
 };
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
