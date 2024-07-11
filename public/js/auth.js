@@ -123,3 +123,4 @@ onAuthStateChanged(auth, (user) => {
 		console.log("User not found in local storage");
 	}
 });
+
