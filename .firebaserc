@@ -1,5 +1,17 @@
 {
   "projects": {
-    "default": "saoluisbeisebol"
-  }
+    "default": "saoluisbeisebol",
+    "slzbeisebol": "slzbeisebolapp"
+  },
+  "targets": {
+    "slzbeisebolapp": {
+      "hosting": {
+        "saoluisbeisebol": [
+          "saoluisbeisebol"
+        ]
+      }
+    }
+  },
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
 }
