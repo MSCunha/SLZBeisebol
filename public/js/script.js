@@ -32,10 +32,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 recoverpsw.addEventListener('click', function(){
 	showLoading();
-	firebase.auth().sendPasswordResetEmail(form.email().value).then()=>{
+	firebase.auth().sendPasswordResetEmail(form.email().value).then(()=>{
 		hideLoading();
 		alert("Email enviado com sucesso!");
-	}.catch(error =>{
+	}).catch(error =>{
 		hideLoading();
 	})
 });
@@ -46,6 +46,7 @@ function redirectHome(){
 		window.location.href = 'home.html';
 	}, 1000);
 }
+
 /*
 function toggleBtnDisable(){
 	const emailValid = validateEmail(email);
@@ -68,6 +69,7 @@ function validateEmail(email) {
 	return re.test(String(email).toLowerCase());
 } 
 */
+
 const form = {
 	email:() =>document.getElementById('email'),
 	password:() =>document.getElementById('password'),
