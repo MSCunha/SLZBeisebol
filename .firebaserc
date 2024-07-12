@@ -3,7 +3,7 @@
     "default": "slzbeisebolapp"
   },
   "targets": {
-    "YOUR_FIREBASE_PROJECT_ID": {
+    "slzbeisebolapp": {
       "hosting": {
         "saoluisbeisebol": [
           "saoluisbeisebol"
