@@ -6,16 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
     <script type="module" src="auth.js"></script>
+    <script type="module" src="script.js"></script>
 </head>
 <body>
-    <div class="login-box" id="loginform" style="display: block;">
+    <div class="login-box" id="loginform" style="display: flex;">
         <img src="logoslzbeisebol.png" class="logo" alt="logo">
         <form action="login" method="submit">
             <input type="text" name="email" id="email" placeholder="Email" required>
             <input type="password" name="senha" id="senha" placeholder="Senha" required>
             <span class="text-button" name="recoverpsw" id="recoverpsw">Recuperar Senha.</span>
             <button type="submit" id="loginbtn" name="login">LOGIN</button>
-            <button type="button" id="registrarbtn" name="registrar">REGISTRAR</button>
+            <button type="button" id="registrar" name="registrar">REGISTRAR</button>
             <div class="checkbox-container">
                 <input type="checkbox" id="remember">
                 <label for="remember">Lembrar</label>
@@ -37,6 +38,5 @@
     <div class="loading" hidden>
         <img src="logoslzbeisebol.png" class="logo" alt="logo">
     </div>
-    <script src="script.js"></script>
 </body>
 </html>

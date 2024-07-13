@@ -49,7 +49,7 @@ document.getElementById('cadastrar').addEventListener('click', (event) => {
 			const docRef = doc(db, "users", user.uid);
 			setDoc(docRef, userData)
 				.then(() => {
-					window.location.href = 'home.html';
+					window.location.href = 'index.html';
 				})
 				.catch((error) => {
 					console.error("Erro ao escrever documento", error);
@@ -75,7 +75,7 @@ document.getElementById('login').addEventListener('click', (event) => {
 			showMessage('Logado com sucesso!', 'signInMessage');
 			const user = userCredential.user;
 			localStorage.setItem('loggedInUserId', user.uid);
-			window.location.href = 'home.html';
+			redirectHome();
 		})
 		.catch((error) => {
 			const errorCode = error.code;
@@ -85,6 +85,16 @@ document.getElementById('login').addEventListener('click', (event) => {
 				showMessage('Conta não existe!', 'signInMessage');
 			}
 		});
+});
+
+
+document.getElementById('registrar').addEventListener('click', function() {
+	form.loginform().style.display = 'none';
+	form.regform().style.display = 'flex';
+});
+document.getElementById('retornar').addEventListener('click', function() {
+	form.loginform().style.display = 'flex';
+	form.regform().style.display = 'none';
 });
 
 const logoutButton = document.getElementById('logout');
@@ -124,3 +134,9 @@ onAuthStateChanged(auth, (user) => {
 	}
 });
 
+function redirectHome(){
+    form.loginform().classList.add('fade-out');
+    setTimeout(function(){
+        window.location.href = 'home.html';
+    }, 1000);
+}
