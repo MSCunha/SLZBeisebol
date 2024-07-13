@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="style.css">
     <script type="module" src="auth.js"></script>
     <script type="module" src="script.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"></script>
+    <script src="script.js"></script>
 </head>
 <body>
     <div class="login-box" id="loginform" style="display: flex;">
@@ -25,7 +29,7 @@
     </div>
     <div class="reg-box" id="regform" style="display: none;">
         <img src="logoslzbeisebol.png" class="logo" alt="logo">
-        <form action="registrar" method="submit">
+        <form action="cadastrar" method="submit">
             <input type="text" name="nome" id="nome" placeholder="Nome" required>
             <input type="number" name="id" id="id" placeholder="# Numero" min="1" max="99" required>
             <input type="text" name="email" id="reg-email" placeholder="Email" required>
